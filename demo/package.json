@@ -1,0 +1,10 @@
+{
+  "name": "squint-demo",
+  "private": true,
+  "scripts": { },
+  "dependencies": { },
+  "devDependencies": {
+    "vite": "^5.1.0",
+    "vite-plugin-squint": "file:.."
+  }
+}
