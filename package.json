@@ -6,7 +6,7 @@
   "license": "",
   "repository": "https://github.com/squint-cljs/vite-plugin-squint",
   "type":"module",
-  "main": "index.js",
+  "main": "index.mjs",
   "files": [],
   "scripts": {},
   "peerDependencies": {
