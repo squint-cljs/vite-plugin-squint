@@ -1,10 +1,7 @@
 {
   "name": "squint-demo",
   "private": true,
-  "scripts": {
-    "build": "yarn vite build",
-    "serve": "yarn vite preview"
-  },
+  "scripts": { },
   "type": "module",
   "dependencies": { },
   "devDependencies": {
