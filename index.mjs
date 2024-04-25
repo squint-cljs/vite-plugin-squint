@@ -1,4 +1,4 @@
-import { compileString } from "squint-cljs";
+import { compileString } from "squint-cljs/compiler/node";
 import path, { dirname } from "path";
 import fs from "fs";
 
@@ -14,8 +14,8 @@ export default function viteSquint(opts = {}) {
         // TODO: squint source mapping
         const file = id.replace(/.jsx$/, "");
         const code = await fs.promises.readFile(file, "utf-8");
-        const compiled = compileString(code);
-        return { code: compiled, map: null };
+        const compiled = await compileString(code, {"in-file": id});
+        return { code: compiled.javascript, map: null };
       }
     },
     resolveId(id, importer, options) {
@@ -23,6 +23,7 @@ export default function viteSquint(opts = {}) {
         // Vite can prompt the plugin to resolve modules that it has already
         // resolved. As we have already resolved the module and added the
         // extension to the id we just need to return the absolute resolveId again.
+        console.log(path.resolve(dirname(importer), id));
         return path.resolve(dirname(importer), id);
       }
       if (/\.cljs$/.test(id)) {
@@ -48,6 +49,7 @@ export default function viteSquint(opts = {}) {
       if (/\.cljs$/.test(file)) {
         // this needs to be the same id returned by resolveId this is what
         // vite uses as the modules identifier
+        console.log('file HMR', file);
         const resolveId = file + ".jsx";
         const module = server.moduleGraph.getModuleById(resolveId);
         if (module) {

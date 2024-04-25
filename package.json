@@ -5,17 +5,15 @@
   "author": "",
   "license": "",
   "repository": "https://github.com/squint-cljs/vite-plugin-squint",
-  "type":"module",
+  "type": "module",
   "main": "index.mjs",
   "files": [],
   "scripts": {},
   "peerDependencies": {
     "vite": ">2.0.0-0"
   },
-  "dependencies": {
-    "squint-cljs": "^0.7.100"
-  },
   "devDependencies": {
+    "squint-cljs": "file:../squint",
     "vite": "latest"
   },
   "keywords": [
